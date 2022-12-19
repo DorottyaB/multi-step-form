@@ -18,7 +18,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/DorottyaB/multi-step-form)
-- Live Site URL: [GitHub Pages](https://your-live-site-url.com)
+- Live Site URL: [GitHub Pages](https://dorottyab.github.io/multi-step-form/)
 
 ### Built with
 
@@ -27,7 +27,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- JavaScript
+- Javascript
 
 ## Author
 
