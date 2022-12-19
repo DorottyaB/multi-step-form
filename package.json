@@ -1,0 +1,16 @@
+{
+  "name": "multi-step-form",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "watch": "tailwindcss -i ./input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./dist/output.css --minify"
+  },
+  "keywords": [],
+  "author": "Dorottya Balogh",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}

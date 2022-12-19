@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *:focus {
+    outline: 1px solid hsl(243, 100%, 62%);
+  }
+
+  html {
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  button {
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  label.navigation:hover .circle,
+  input[type='radio'][name='steps']:checked + label.navigation .circle,
+  label.navigation:active .circle {
+    color: hsl(213, 96%, 18%);
+    background-color: hsl(228, 100%, 84%);
+    border-color: hsl(228, 100%, 84%);
+  }
+
+  input[type='radio'][name='steps']:disabled + label.navigation,
+  .btn-next:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  label.plan:hover {
+    border-color: hsl(243, 100%, 62%);
+  }
+
+  input[type='radio'][name='plan']:checked + label.plan,
+  label.plan:active,
+  label.add-on:has(input[type='checkbox'][name='add-on']:checked) {
+    border-color: hsl(243, 100%, 62%);
+    background-color: rgba(173, 190, 255, 0.1);
+  }
+
+  .toggle-switch span.active {
+    color: hsl(213, 96%, 18%);
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 14px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .switch input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  input[type='checkbox'][name='add-on'] {
+    appearance: none;
+    background: #fff; /* this is needed for iOS. Otherwise the background just becomes black. */
+    border: 1px solid hsl(231, 11%, 63%);
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  input[type='checkbox'][name='add-on']::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    top: 0;
+  }
+
+  input[type='checkbox'][name='add-on']:focus {
+    border: 1px solid hsl(243, 100%, 62%);
+    outline: 1px solid hsl(243, 100%, 62%);
+  }
+
+  /* for mixed state */
+  input[type='checkbox'][name='add-on']:indeterminate::before,
+  input[type='checkbox'][aria-checked='mixed'][name='add-on']::before {
+    border: 2px solid hsl(228, 100%, 84%);
+    height: 0;
+    width: 40%;
+  }
+
+  input[type='checkbox'][name='add-on']:checked {
+    background-color: hsl(243, 100%, 62%);
+    border: 1px solid hsl(243, 100%, 62%);
+  }
+
+  /* check mark */
+  input[type='checkbox'][name='add-on']:checked::before {
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    height: 55%;
+    width: 30%;
+    transform: rotate(45deg) translateY(-6%) translateX(-25%);
+  }
+}

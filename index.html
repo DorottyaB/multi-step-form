@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script src="./data.js"></script>
+    <script src="/script.js" defer></script>
+    <title>Multi-step form</title>
+  </head>
+  <body
+    class="min-h-screen flex flex-col justify-between items-center bg-magnolia lg:justify-center lg:p-6"
+  >
+    <div
+      class="min-h-screen w-full lg:max-w-[965px] grid grid-cols-[1fr] grid-rows-[100px_100px_max-content_minmax(40px,_auto)_80px] lg:min-h-full self-center lg:grid-cols-[274px_1fr] lg:grid-rows-[237px,_237px,_100px] lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-md"
+    >
+      <!-- Sidebar start -->
+      <nav
+        class="bg-nav-pattern-mobile bg-no-repeat row-start-1 row-end-3 col-start-1 col-end-2 lg:bg-nav-pattern-desktop lg:row-end-4 lg:rounded-lg"
+      >
+        <div
+          class="flex justify-center items-center gap-4 pt-8 lg:flex-col lg:items-start lg:pl-9 lg:pt-10 lg:gap-6"
+        >
+          <input type="radio" name="steps" id="step-1" checked class="hidden" />
+          <label for="step-1" class="navigation lg:flex lg:gap-3 lg:items-center lg:cursor-pointer">
+            <div
+              class="circle w-8 h-8 flex items-center justify-center rounded-full text-white border border-white lg:hover:text-marineBlue active:text-marineBlue lg:hover:bg-pastelBlue active:bg-pastelBlue lg:hover:border-pastelBlue active:border-pastelBlue"
+            >
+              1
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-pastelBlue text-xs uppercase leading-none">Step 1</p>
+              <p class="text-magnolia uppercase font-medium text-md tracking-wider">Your info</p>
+            </div>
+          </label>
+          <input type="radio" name="steps" id="step-2" class="hidden" />
+          <label for="step-2" class="navigation lg:flex lg:gap-3 lg:items-center lg:cursor-pointer">
+            <div
+              class="circle w-8 h-8 flex items-center justify-center rounded-full text-white border border-white lg:hover:text-marineBlue active:text-marineBlue lg:hover:bg-pastelBlue active:bg-pastelBlue lg:hover:border-pastelBlue active:border-pastelBlue"
+            >
+              2
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-pastelBlue text-xs uppercase leading-none">Step 2</p>
+              <p class="text-magnolia uppercase font-medium text-md tracking-wider">Select plan</p>
+            </div>
+          </label>
+          <input type="radio" name="steps" id="step-3" class="hidden" />
+          <label for="step-3" class="navigation lg:flex lg:gap-3 lg:items-center lg:cursor-pointer">
+            <div
+              class="circle w-8 h-8 flex items-center justify-center rounded-full text-white border border-white lg:hover:text-marineBlue active:text-marineBlue lg:hover:bg-pastelBlue active:bg-pastelBlue lg:hover:border-pastelBlue active:border-pastelBlue"
+            >
+              3
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-pastelBlue text-xs uppercase leading-none">Step 3</p>
+              <p class="text-magnolia uppercase font-medium text-md tracking-wider">Add-ons</p>
+            </div>
+          </label>
+          <input type="radio" name="steps" id="step-4" class="hidden" />
+          <label for="step-4" class="navigation lg:flex lg:gap-3 lg:items-center lg:cursor-pointer">
+            <div
+              class="circle w-8 h-8 flex items-center justify-center rounded-full text-white border border-white lg:hover:text-marineBlue active:text-marineBlue lg:hover:bg-pastelBlue active:bg-pastelBlue lg:hover:border-pastelBlue active:border-pastelBlue"
+            >
+              4
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-pastelBlue text-xs uppercase leading-none">Step 4</p>
+              <p class="text-magnolia uppercase font-medium text-md tracking-wider">Summary</p>
+            </div>
+          </label>
+        </div>
+      </nav>
+      <!-- Sidebar end -->
+
+      <!-- Step 1 start -->
+      <main
+        class="row-start-2 row-end-4 col-start-1 col-end-2 bg-white rounded-xl shadow-md mx-4 px-5 py-7 lg:row-start-1 lg:row-end-3 lg:col-start-2 lg:col-end-3 lg:mx-0 lg:bg-transparent lg:rounded-none lg:shadow-none lg:px-20"
+      >
+        <section id="section-step-1">
+          <div>
+            <h1 class="text-2xl text-marineBlue font-bold mb-2 lg:text-4xl">Personal info</h1>
+            <p class="text-coolGray text-lg">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <form class="py-3 lg:pt-4">
+            <div class="flex flex-col relative">
+              <label class="text-marineBlue font-medium text-md mb-1 mt-3 lg:mt-4" for="name"
+                >Name</label
+              >
+              <p
+                class="invalid-tooltip absolute right-0 top-4 text-sm font-bold text-strawberryRed"
+                hidden
+              ></p>
+              <input
+                class="border required:border-coolGray rounded-sm px-3 py-2 lg:px-4 lg:py-3 lg:rounded-md focus-visible:border-purplishBlue outline-none invalid:focus:border-strawberryRed"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="e.g. Stephen King"
+                minlength="3"
+                maxlength="100"
+                required
+              />
+            </div>
+            <div class="flex flex-col relative">
+              <label class="text-marineBlue font-medium text-md mb-1 mt-3 lg:mt-4" for="email"
+                >Email Address</label
+              >
+              <p
+                class="invalid-tooltip absolute right-0 top-4 text-sm font-bold text-strawberryRed"
+                hidden
+              ></p>
+              <input
+                class="border required:border-coolGray rounded-sm px-3 py-2 lg:px-4 lg:py-3 lg:rounded-md focus-visible:border-purplishBlue outline-none invalid:focus:border-strawberryRed"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="e.g. stephenking@lorem.com"
+                required
+              />
+            </div>
+            <div class="flex flex-col relative">
+              <label class="text-marineBlue font-medium text-md mb-1 mt-3 lg:mt-4" for="phone"
+                >Phone Number</label
+              >
+              <p
+                class="invalid-tooltip absolute right-0 top-4 text-sm font-bold text-strawberryRed"
+                hidden
+              ></p>
+              <input
+                class="border required:border-coolGray rounded-sm px-3 py-2 lg:px-4 lg:py-3 lg:rounded-md focus-visible:border-purplishBlue outline-none invalid:focus:border-strawberryRed"
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="e.g. +1 234 567 890"
+                pattern="\+?[0-9][0-9]{3}[0-9]{3}[0-9]{3}"
+                required
+              />
+            </div>
+          </form>
+        </section>
+        <!-- Step 1 end -->
+
+        <!-- Step 2 start -->
+        <section id="section-step-2" hidden>
+          <div>
+            <h1 class="text-2xl text-marineBlue font-bold mb-2 lg:text-4xl">Select your plan</h1>
+            <p class="text-coolGray text-lg">You have the option of monthly or yearly billing.</p>
+          </div>
+          <div class="mt-5 mb-6 flex flex-col gap-3 lg:flex-row">
+            <div class="flex-1">
+              <input type="radio" name="plan" id="arcade" value="Arcade" checked class="hidden" />
+              <label
+                for="arcade"
+                class="plan border border-lightGray rounded-md px-3 py-4 flex lg:flex-col gap-3 lg:cursor-pointer lg:gap-10"
+              >
+                <div>
+                  <img src="./assets/images/icon-arcade.svg" alt="Arcade icon" />
+                </div>
+                <div class="">
+                  <p class="text-marineBlue font-bold text-md">Arcade</p>
+                  <p class="plan-price text-coolGray text-xs font-medium">$9/mo</p>
+                  <p class="yearly-deal text-marineBlue font-medium text-sm hidden">
+                    2 months free
+                  </p>
+                </div>
+              </label>
+            </div>
+            <div class="flex-1">
+              <input type="radio" name="plan" id="advanced" value="Advanced" class="hidden" />
+              <label
+                for="advanced"
+                class="plan border border-lightGray rounded-md px-3 py-4 flex lg:flex-col gap-3 lg:cursor-pointer lg:gap-10"
+              >
+                <div>
+                  <img src="./assets/images/icon-advanced.svg" alt="Advanced icon" />
+                </div>
+                <div class="">
+                  <p class="text-marineBlue font-bold text-md">Advanced</p>
+                  <p class="plan-price text-coolGray text-xs font-medium">$12/mo</p>
+                  <p class="yearly-deal text-marineBlue font-medium text-sm hidden">
+                    2 months free
+                  </p>
+                </div>
+              </label>
+            </div>
+            <div class="flex-1">
+              <input type="radio" name="plan" id="pro" value="Pro" class="hidden" />
+              <label
+                for="pro"
+                class="plan border border-lightGray rounded-md px-3 py-4 flex lg:flex-col gap-3 lg:cursor-pointer lg:gap-10"
+              >
+                <div>
+                  <img src="./assets/images/icon-pro.svg" alt="Pro icon" />
+                </div>
+                <div class="">
+                  <p class="text-marineBlue font-bold text-md">Pro</p>
+                  <p class="plan-price text-coolGray text-xs font-medium">$15/mo</p>
+                  <p class="yearly-deal text-marineBlue font-medium text-sm hidden">
+                    2 months free
+                  </p>
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- Toggle switch -->
+          <div
+            class="toggle-switch mt-8 p-4 w-full rounded-md bg-[rgba(173,_190,_255,_0.16)] flex items-center justify-center gap-7"
+          >
+            <span id="monthly-plan" class="text-coolGray font-medium active">Monthly</span>
+            <label class="switch relative inline-block w-[50px] h-[24px] lg:hover:brightness-110">
+              <input type="checkbox" id="toggle-switch" />
+              <span
+                class="slider absolute lg:cursor-pointer top-0 left-0 right-0 bottom-0 rounded-[34px] bg-marineBlue duration-300"
+              ></span>
+            </label>
+            <span id="yearly-plan" class="text-coolGray font-medium">Yearly</span>
+          </div>
+        </section>
+        <!-- Step 2 end -->
+
+        <!-- Step 3 start -->
+        <section id="section-step-3" hidden>
+          <div>
+            <h1 class="text-2xl text-marineBlue font-bold mb-2 lg:text-4xl">Pick add-ons</h1>
+            <p class="text-coolGray text-lg">Add-ons help enhance your gaming experience.</p>
+          </div>
+          <div class="mt-5 mb-3 flex flex-col gap-4 lg:mt-8">
+            <div class="flex-1">
+              <label
+                for="add-on-1"
+                class="add-on border border-lightGray rounded-md p-3 grid grid-cols-[auto,_1fr,_auto] items-center gap-3 lg:gap-5 lg:px-5 lg:py-4 lg:cursor-pointer"
+              >
+                <input type="checkbox" name="add-on" id="add-on-1" value="Online service" />
+                <div>
+                  <p class="text-marineBlue font-bold text-[14px] lg:text-md">Online service</p>
+                  <p
+                    class="text-coolGray text-xs font-medium leading-none lg:leading-normal lg:text-sm"
+                  >
+                    Access to multiplayer games
+                  </p>
+                </div>
+                <p class="add-on-price text-purplishBlue text-xs">+$1/mo</p>
+              </label>
+            </div>
+            <div class="flex-1">
+              <label
+                for="add-on-2"
+                class="add-on border border-lightGray rounded-md p-3 grid grid-cols-[auto,_1fr,_auto] items-center gap-3 lg:gap-5 lg:px-5 lg:py-4 lg:cursor-pointer"
+              >
+                <input type="checkbox" name="add-on" id="add-on-2" value="Larger storage" />
+                <div>
+                  <p class="text-marineBlue font-bold text-[14px] lg:text-md">Larger storage</p>
+                  <p
+                    class="text-coolGray text-xs font-medium leading-none lg:leading-normal lg:text-sm"
+                  >
+                    Extra 1TB of cloud save
+                  </p>
+                </div>
+                <p class="add-on-price text-purplishBlue text-xs">+$2/mo</p>
+              </label>
+            </div>
+            <div class="flex-1">
+              <label
+                for="add-on-3"
+                class="add-on border border-lightGray rounded-md p-3 grid grid-cols-[auto,_1fr,_auto] items-center gap-3 lg:gap-5 lg:px-5 lg:py-4 lg:cursor-pointer"
+              >
+                <input type="checkbox" name="add-on" id="add-on-3" value="Customizable profile" />
+                <div>
+                  <p class="text-marineBlue font-bold text-[14px] lg:text-md">
+                    Customizable Profile
+                  </p>
+                  <p
+                    class="text-coolGray text-xs font-medium leading-none lg:leading-normal lg:text-sm"
+                  >
+                    Custom theme on your profile
+                  </p>
+                </div>
+                <p class="add-on-price text-purplishBlue text-xs">+$2/mo</p>
+              </label>
+            </div>
+          </div>
+        </section>
+        <!-- Step 3 end -->
+
+        <!-- Step 4 start -->
+        <section id="section-step-4" hidden>
+          <div>
+            <h1 class="text-2xl text-marineBlue font-bold mb-2 lg:text-4xl">Finishing up</h1>
+            <p class="text-coolGray text-lg">Double-check everything looks OK before confirming.</p>
+          </div>
+          <div
+            id="summary-container"
+            class="mt-5 mb-2 p-3 pb-4 bg-[rgba(173,_190,_255,_0.1)] rounded-md flex flex-col gap-2 lg:gap-4 lg:mt-8 lg:pt-4 lg:pb-5 lg:px-5"
+          >
+            <div
+              class="add-on pb-2 border-b border-b-lightGray flex justify-between items-center gap-2 lg:pb-4"
+            >
+              <div>
+                <p
+                  id="selected-plan"
+                  class="text-marineBlue font-bold text-[14px] lg:text-base"
+                ></p>
+                <p
+                  id="btn-change"
+                  class="text-coolGray text-sm font-medium leading-normal underline lg:text-md lg:hover:cursor-pointer lg:hover:text-purplishBlue"
+                >
+                  Change
+                </p>
+              </div>
+              <p
+                id="selected-plans-price"
+                class="add-on-price text-marineBlue font-bold text-xs lg:text-base"
+              ></p>
+            </div>
+          </div>
+          <div class="mt-5 px-3 flex justify-between gap-4 lg:mt-8 lg:px-5">
+            <p class="text-coolGray text-sm font-medium lg:text-md">
+              Total <span id="total-per-period"></span>
+            </p>
+            <p id="total-price" class="text-purplishBlue font-bold text-md lg:text-base"></p>
+          </div>
+        </section>
+        <!-- Step 4 end -->
+
+        <!-- Step 5 start -->
+        <section id="section-step-5" class="mt-12 mb-10 lg:mt-28 lg:mb-0" hidden>
+          <div class="flex flex-col items-center">
+            <img
+              class="w-14 mb-5 lg:w-20 lg:mb-7"
+              src="./assets/images/icon-thank-you.svg"
+              alt="Checkmark icon"
+            />
+            <h1 class="text-2xl text-marineBlue font-bold mb-2 lg:text-4xl">Thank you!</h1>
+            <p class="text-coolGray text-base lg:text-lg text-center">
+              Thanks for confirming your subscription! We hope you have fun using our platform. If
+              you ever need support, please feel free to email us at support@loremgaming.com.
+            </p>
+          </div>
+        </section>
+        <!-- Step 5 end -->
+      </main>
+
+      <div
+        class="row-start-5 row-end-6 bg-white flex items-center justify-between px-5 shadow-sm lg:shadow-none lg:row-start-3 lg:row-end-4 lg:col-start-2 lg:col-end-3 lg:rounded-none lg:bg-transparent lg:px-20"
+      >
+        <button
+          id="btn-back"
+          class="text-coolGray font-bold lg:hover:text-marineBlue active:text-marineBlue"
+          hidden
+        >
+          Go Back
+        </button>
+        <button
+          id="btn-next"
+          class="btn-next bg-marineBlue rounded-[4px] text-white p-2 w-28 ml-auto lg:w-32 lg:rounded-md lg:p-3 lg:hover:brightness-125 active:brightness-125 active:scale-95 duration-300"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <div class="text-sm text-marineBlue w-full text-center p-3 bg-white lg:bg-transparent lg:mt-6">
+      Challenge by
+      <a
+        class="text-purplishBlue"
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a class="text-purplishBlue" href="https://github.com/DorottyaB" target="_blank">Dorottya</a>.
+    </div>
+  </body>
+</html>
